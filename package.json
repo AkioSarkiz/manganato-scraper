@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "test": "jest"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -25,12 +25,10 @@
   },
   "homepage": "https://github.com/AkioSarkiz/manganato-scraper#readme",
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "vitest": "^1.4.0"
   },
   "volta": {
     "node": "20.11.1",

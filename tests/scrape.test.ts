@@ -1,6 +1,9 @@
-import { scrape } from "../src";
+import { getLatestManga } from "../src";
+import { describe, test, expect } from "vitest";
 
-test("dump test", () => {
-  const result = scrape();
-  expect(result).toBeInstanceOf(Array);
+describe("should load latest manga", () => {
+  test("dump test", async () => {
+    const result = await getLatestManga();
+    expect(result).toBeInstanceOf(Array);
+  });
 });
