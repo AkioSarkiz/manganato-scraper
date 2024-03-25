@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "axios": "^1.6.8",
+    "html-entities": "^2.5.2",
     "node-html-parser": "^6.1.12",
     "url-join": "^5.0.0"
   }
