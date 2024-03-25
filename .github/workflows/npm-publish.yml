@@ -1,4 +1,4 @@
-name: Mangato scraper package
+name: Manganato scraper package
 
 on:
   release:
