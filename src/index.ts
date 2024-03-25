@@ -1,1 +1,1 @@
-export { scrape } from "./scraper";
+export { getLatestManga } from "./list";

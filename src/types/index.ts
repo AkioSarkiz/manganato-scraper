@@ -1,0 +1,1 @@
+export { LatestManga } from "./list";
