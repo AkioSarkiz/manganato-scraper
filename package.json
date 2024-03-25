@@ -35,5 +35,10 @@
   "volta": {
     "node": "20.11.1",
     "npm": "10.5.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "node-html-parser": "^6.1.12",
+    "url-join": "^5.0.0"
   }
 }
