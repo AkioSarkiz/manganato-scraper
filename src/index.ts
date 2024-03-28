@@ -1,1 +1,1 @@
-export { getLatestManga } from "./list";
+export { getLatestManga, getNewestManga, geHotManga } from "./list";

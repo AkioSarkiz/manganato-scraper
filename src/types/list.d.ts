@@ -1,4 +1,4 @@
-export interface LatestManga {
+export interface DashboardManga {
   title: string;
   link: string;
   cover: string;

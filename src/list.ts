@@ -1,20 +1,24 @@
 import axios from "./axios";
-import { LatestManga } from "./types";
+import { DashboardManga } from "./types";
 import { getBaseUrl } from "./utils";
 import { parse } from "node-html-parser";
 import { decode } from "html-entities";
 
-export interface LatestMangaProps {
+export interface PaginationProps {
   // default is 1
   page?: number;
+}
+
+export interface ParseDashboardPageProps extends PaginationProps {
+  url: string;
 }
 
 /**
  * NOTE: If something is going wrong and method can't get data then you receive empty array.
  */
-export const getLatestManga = async (props?: LatestMangaProps): Promise<LatestManga[]> => {
-  const mangaList: LatestManga[] = [];
-  const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}?type=newest`);
+const parseDashboardPage = async (props: ParseDashboardPageProps): Promise<DashboardManga[]> => {
+  const mangaList: DashboardManga[] = [];
+  const url = getBaseUrl(props.url);
 
   const response = await axios.get(url);
 
@@ -57,4 +61,22 @@ export const getLatestManga = async (props?: LatestMangaProps): Promise<LatestMa
   }
 
   return mangaList;
+};
+
+export const getLatestManga = async (props?: PaginationProps): Promise<DashboardManga[]> => {
+  const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}`);
+
+  return parseDashboardPage({ url, ...props });
+};
+
+export const getNewestManga = async (props?: PaginationProps): Promise<DashboardManga[]> => {
+  const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}?type=newest`);
+
+  return parseDashboardPage({ url, ...props });
+};
+
+export const geHotManga = async (props?: PaginationProps): Promise<DashboardManga[]> => {
+  const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}?type=topview`);
+
+  return parseDashboardPage({ url, ...props });
 };

@@ -1,1 +1,1 @@
-export { LatestManga } from "./list";
+export { DashboardManga } from "./list";
