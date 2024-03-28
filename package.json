@@ -1,6 +1,6 @@
 {
   "name": "manganato-scraper",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "The manganato scraper",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
