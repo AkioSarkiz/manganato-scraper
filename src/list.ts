@@ -4,13 +4,19 @@ import { getBaseUrl } from "./utils";
 import { parse } from "node-html-parser";
 import { decode } from "html-entities";
 
+export interface LatestMangaProps {
+  // default is 1
+  page?: number;
+}
+
 /**
  * NOTE: If something is going wrong and method can't get data then you receive empty array.
  */
-export const getLatestManga = async (): Promise<any[]> => {
-  const url = getBaseUrl("genre-all");
-  const response = await axios.get(url);
+export const getLatestManga = async (props?: LatestMangaProps): Promise<LatestManga[]> => {
   const mangaList: LatestManga[] = [];
+  const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}?type=newest`);
+
+  const response = await axios.get(url);
 
   if (response.status !== 200) {
     return [];
@@ -25,18 +31,14 @@ export const getLatestManga = async (): Promise<any[]> => {
 
   const mangaCards = panel.querySelectorAll(".content-genres-item");
 
-  mangaCards.forEach((mangaCard) => {
+  for (let i = 0; i < mangaCards.length; i++) {
+    const mangaCard = mangaCards[i];
     const title = mangaCard.querySelector(".genres-item-info > h3")?.innerText;
-    const link = mangaCard
-      .querySelector(".genres-item-info > a")
-      ?.getAttribute("href") as string;
-    const cover = mangaCard
-      .querySelector(".img-loading")
-      ?.getAttribute("src") as string;
+    const link = mangaCard.querySelector(".genres-item-info > a")?.getAttribute("href") as string;
+    const cover = mangaCard.querySelector(".img-loading")?.getAttribute("src") as string;
     const rating = mangaCard.querySelector(".genres-item-rate")?.innerText;
     const views = mangaCard.querySelector(".genres-item-view")?.innerText;
-    let description =
-      mangaCard.querySelector(".genres-item-description")?.innerText || null;
+    let description = mangaCard.querySelector(".genres-item-description")?.innerText || null;
 
     if (description) {
       description = decode(description.replace(/\n/g, ""));
@@ -52,7 +54,7 @@ export const getLatestManga = async (): Promise<any[]> => {
         description,
       });
     }
-  });
+  }
 
   return mangaList;
 };
