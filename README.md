@@ -10,6 +10,34 @@
 npm install manganato-scraper
 ```
 
+### How to use
+
+```typescript
+import { getLatestMangaList } from "manganato-scraper";
+
+const result = await getLatestMangaList();
+
+// an example result
+// [
+//    ...
+//   {
+//     title: 'Attack On Titan',
+//     link: 'https://chapmanganato.to/manga-oa952283',
+//     cover: 'https://avt.mkklcdnv6temp.com/34/b/1-1583465037.jpg',
+//     rating: '4.5',
+//     views: 'View : 106.5M'
+//   },
+//   {
+//     title: 'Shingeki No Kyojin - Before The Fall',
+//     link: 'https://chapmanganato.to/manga-vi952091',
+//     cover: 'https://avt.mkklcdnv6temp.com/27/k/1-1583464768.jpg',
+//     rating: '4.7',
+//     views: 'View : 8M'
+//   },
+//   ...
+// ]
+```
+
 ### Available methods
 
 | Method             | Description                                                              |
