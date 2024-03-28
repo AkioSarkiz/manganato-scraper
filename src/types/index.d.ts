@@ -1,1 +1,1 @@
-export { DashboardManga } from "./list";
+export * from "./list";
