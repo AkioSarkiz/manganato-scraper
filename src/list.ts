@@ -1,6 +1,6 @@
 import axios from "./axios";
 import { DashboardManga } from "./types";
-import { getBaseUrl } from "./utils";
+import { getBaseUrl } from "./utilities";
 import { parse } from "node-html-parser";
 import { decode } from "html-entities";
 
