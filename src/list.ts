@@ -16,7 +16,7 @@ export interface ParseDashboardPageProps extends PaginationProps {
 /**
  * NOTE: If something is going wrong and method can't get data then you receive empty array.
  */
-const parseDashboardPage = async (props: ParseDashboardPageProps): Promise<DashboardManga[]> => {
+export const parseDashboardPage = async (props: ParseDashboardPageProps): Promise<DashboardManga[]> => {
   const mangaList: DashboardManga[] = [];
   const url = getBaseUrl(props.url);
 
@@ -63,19 +63,19 @@ const parseDashboardPage = async (props: ParseDashboardPageProps): Promise<Dashb
   return mangaList;
 };
 
-export const getLatestManga = async (props?: PaginationProps): Promise<DashboardManga[]> => {
+export const getLatestMangaList = async (props?: PaginationProps): Promise<DashboardManga[]> => {
   const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}`);
 
   return parseDashboardPage({ url, ...props });
 };
 
-export const getNewestManga = async (props?: PaginationProps): Promise<DashboardManga[]> => {
+export const getNewestMangaList = async (props?: PaginationProps): Promise<DashboardManga[]> => {
   const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}?type=newest`);
 
   return parseDashboardPage({ url, ...props });
 };
 
-export const geHotManga = async (props?: PaginationProps): Promise<DashboardManga[]> => {
+export const geHotMangaList = async (props?: PaginationProps): Promise<DashboardManga[]> => {
   const url = getBaseUrl(`genre-all/${props?.page ? props.page : ""}?type=topview`);
 
   return parseDashboardPage({ url, ...props });
