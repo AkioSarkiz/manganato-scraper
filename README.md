@@ -46,3 +46,4 @@ const result = await getLatestMangaList();
 | getNewestMangaList | Get newest manga from the website. This method supported pagination      |
 | geHotMangaList     | Get hot\popular manga from the website. This method supported pagination |
 | search             | Find the mangas by query. This method supported pagination               |
+| getMangaDetails    | get details about the manga                                              |
